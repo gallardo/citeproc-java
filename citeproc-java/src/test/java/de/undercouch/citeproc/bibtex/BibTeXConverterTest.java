@@ -17,11 +17,13 @@ package de.undercouch.citeproc.bibtex;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
+import org.jbibtex.ParseException;
 import org.jbibtex.StringValue;
 import org.junit.Test;
 
@@ -136,5 +138,20 @@ public class BibTeXConverterTest extends AbstractBibTeXTest {
 		BibTeXConverter conv = new BibTeXConverter();
 		CSLItemData i = conv.toItemData(e);
 		assertEquals("systèmes différentiels", i.getTitle());
+	}
+
+	/**
+	 * Test if the field {@code language} of BibTeX entry is read.
+	 */
+	@Test
+	public void shouldReadTheLanguageFieldOfASingleEntry() throws IOException, ParseException {
+		BibTeXDatabase db = loadUnixDatabase();
+
+		BibTeXEntry e = db.resolveEntry(new Key("Bach:1986:UTS"));
+
+		BibTeXConverter conv = new BibTeXConverter();
+		CSLItemData cid = conv.toItemData(e);
+		assertEquals("Bach:1986:UTS", cid.getId());
+		assertEquals("German", cid.getLanguage());
 	}
 }

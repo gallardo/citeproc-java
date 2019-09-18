@@ -109,7 +109,8 @@ public class BibTeXConverter {
 	private static final String TYPE_TECHREPORT = "techreport";
 	private static final String TYPE_UNPUBLISHED = "unpublished";
 	private static final String TYPE_WWW = "www";
-	
+	private static final String FIELD_LANGUAGE = "language";
+
 	private final LaTeXParser latexParser;
 	private final LaTeXPrinter latexPrinter;
 	
@@ -309,7 +310,11 @@ public class BibTeXConverter {
 		if (entries.containsKey(FIELD_ACCESSED)) {
 			builder.accessed(DateParser.toDate(entries.get(FIELD_ACCESSED)));
 		}
-		
+
+		if (entries.containsKey(FIELD_LANGUAGE)) {
+			builder.language(entries.get(FIELD_LANGUAGE));
+		}
+
 		//map other attributes
 		builder.volume(entries.get(FIELD_VOLUME));
 		builder.keyword(entries.get(FIELD_KEYWORDS));
@@ -323,7 +328,7 @@ public class BibTeXConverter {
 		builder.abstrct(entries.get(FIELD_ABSTRACT));
 		builder.DOI(entries.get(FIELD_DOI));
 		builder.note(entries.get(FIELD_NOTE));
-		
+
 		//create citation item
 		return builder.build();
 	}
