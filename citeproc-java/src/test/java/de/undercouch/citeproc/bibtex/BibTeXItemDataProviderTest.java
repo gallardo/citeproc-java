@@ -213,8 +213,7 @@ public class BibTeXItemDataProviderTest extends AbstractBibTeXTest {
 
 			Bibliography b = citeproc.makeBibliography();
 			assertEquals(1, b.getEntries().length);
-			assertEquals("Hu, X. (2007). Essays on the Role of Specific Human "
-					+ "Capital. (J. Hellerstein, Ed.).\n", b.getEntries()[0]);
+			assertEquals("Hu, X. (2007). Essays on the Role of Specific Human Capital (J. Hellerstein, Ed.).\n", b.getEntries()[0]);
 		}
 	}
 }
