@@ -12,9 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import java.lang.reflect.Array
-import org.fusesource.jansi.Ansi
-import org.fusesource.jansi.AnsiConsole
 import org.python.core.PyString
 import org.python.core.PySystemState
 import org.python.util.PythonInterpreter
@@ -27,7 +24,7 @@ class CSLTestSuite {
     CSLTestSuite(project, path) {
         this.project = project
         
-        testPyFile = new File(path, 'test.py')
+        testPyFile = new File(path, 'fixtures/std/processor.py')
         
         def cp = project.test.classpath
         def urls = cp.files.collect { it.toURI().toURL() }
@@ -55,7 +52,7 @@ class CSLTestSuite {
     }
     
     private def fixInFile(name, s, d) {
-        def dir = new File(testPyFile.getParentFile(), 'tests/fixtures/run/machines')
+        def dir = new File(testPyFile.getParentFile(), 'processor-tests/machines')
         def f = new File(dir, name)
         def found = false
         def tempFile = File.createTempFile('citeproc', 'json')
@@ -77,7 +74,7 @@ class CSLTestSuite {
     }
     
     def run() {
-        def dir = new File(testPyFile.getParentFile(), 'tests/fixtures/run/machines')
+        def dir = new File(testPyFile.getParentFile(), 'processor-tests/machines')
         
         def runnerTypeClass = cl.loadClass('de.undercouch.citeproc.script.ScriptRunnerFactory$RunnerType')
         def testSuiteRunnerClass = cl.loadClass('de.undercouch.citeproc.TestSuiteRunner')
