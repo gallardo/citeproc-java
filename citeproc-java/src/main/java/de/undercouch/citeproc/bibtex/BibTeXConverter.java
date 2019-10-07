@@ -87,11 +87,12 @@ public class BibTeXConverter {
 	private static final String FIELD_SERIES = "series";
 	private static final String FIELD_STATUS = "status";
 	private static final String FIELD_TITLE = "title";
+	private static final String FIELD_TYPE = "type";
 	private static final String FIELD_URL = "url";
 	private static final String FIELD_URLDATE = "urldate";
 	private static final String FIELD_VOLUME = "volume";
 	private static final String FIELD_YEAR = "year";
-	
+
 	private static final String TYPE_ARTICLE = "article";
 	private static final String TYPE_BOOK = "book";
 	private static final String TYPE_BOOKLET = "booklet";
@@ -312,6 +313,29 @@ public class BibTeXConverter {
 			builder.accessed(DateParser.toDate(entries.get(FIELD_ACCESSED)));
 		}
 
+		//map genre as per https://aurimasv.github.io/z2csl/typeMap.xml#map-thesis
+		switch (type) {
+			case BOOK:
+			case MANUSCRIPT:
+			case MAP:
+			case MOTION_PICTURE:
+			case PERSONAL_COMMUNICATION:
+			case POST:
+			case POST_WEBLOG:
+			case REPORT:
+			case SPEECH:
+			case THESIS:
+			case WEBPAGE:
+				if (entries.containsKey(FIELD_TYPE)) {
+					builder.genre(entries.get(FIELD_TYPE));
+				}
+				break;
+			default:
+				// ignore genre
+				break;
+		}
+
+		// map language
 		if (entries.containsKey(FIELD_LANGUAGE)) {
 			builder.language(entries.get(FIELD_LANGUAGE));
 		}
