@@ -85,7 +85,7 @@ public class BibTeXItemDataProviderTest extends AbstractBibTeXTest {
 			Bibliography b = citeproc.makeBibliography();
 			assertEquals(4, b.getEntries().length);
 			assertEquals("[1]S. C. Johnson and B. W. Kernighan, \u201cThe Programming Language B,\u201d "
-					+ "Bell Laboratories, Murray Hill, NJ, USA, 8, 1973.\n", b.getEntries()[0]);
+					+ "Bell Laboratories, Murray Hill, NJ, USA, Technical report 8, 1973.\n", b.getEntries()[0]);
 			assertEquals("[2]D. M. Ritchie and K. Thompson, \u201cThe UNIX time-sharing system,\u201d "
 					+ "Operating Systems Review, vol. 7, no. 4, p. 27, Oct. 1973.\n", b.getEntries()[1]);
 			assertEquals("[3]D. W. Ritchie and K. Thompson, \u201cThe UNIX Time-Sharing System,\u201d "
@@ -218,6 +218,63 @@ public class BibTeXItemDataProviderTest extends AbstractBibTeXTest {
 			Bibliography b = citeproc.makeBibliography();
 			assertEquals(1, b.getEntries().length);
 			assertEquals("Hu, X. (2007). Essays on the Role of Specific Human Capital (J. Hellerstein, Ed.).\n", b.getEntries()[0]);
+		}
+	}
+
+	/**
+	 * Check that we set the "genre" attribute (see issue #63)
+	 * @throws Exception if something goes wrong
+	 */
+	@Test
+	public void techReportWithExplicitType() throws Exception {
+		// compare with the item from issue #63. Example from http://tug.ctan.org/tex-archive/biblio/bibtex/contrib/IEEEtran/IEEEexample.bib
+		String entry = "%%% technical report with type\n" +
+				"%%% for those times when \"Tech. Rep.\" needs to be modified\n" +
+				"%%% From the February 2001 issue of \"IEEE/ACM Transactions on Networking\",\n" +
+				"%%% page 46, reference #8.\n" +
+				"@techreport{IEEEexample:techreptype,\n" +
+				"  author        = \"J. Padhye and V. Firoiu and D. Towsley\",\n" +
+				"  title         = \"A Stochastic Model of {TCP} {R}eno Congestion Avoidance\n" +
+				"                   and Control\",\n" +
+				"  institution   = \"Univ. of Massachusetts\",\n" +
+				"  address       = \"Amherst, MA\",\n" +
+				"  type          = \"CMPSCI Tech. Rep.\",\n" +
+				"  number        = \"99-02\",\n" +
+				"  year          = \"1999\"\n" +
+				"}\n" +
+				"\n" +
+				"%%% technical report with type\n" +
+				"%%% for those times when \"Tech. Rep.\" needs to be modified\n" +
+				"%%% This reference did not have an address.\n" +
+				"%%% From the January 2000 issue of \"IEEE Transactions on Communications\",\n" +
+				"%%% page 117, reference #6.\n" +
+				"@techreport{IEEEexample:techreptypeii,\n" +
+				"  author        = \"D. Middleton and A. D. Spaulding\",\n" +
+				"  title         = \"A Tutorial Review of Elements of Weak Signal Detection\n" +
+				"                   in Non-{G}aussian {EMI} Environments\",\n" +
+				"  institution   = \"National Telecommunications and Information\n" +
+				"                   Administration ({NTIA}), U.S. Dept. of Commerce\",\n" +
+				"  type          = \"NTIA Report\",\n" +
+				"  number        = \"86-194\",\n" +
+				"  month         = may,\n" +
+				"  year          = \"1986\"\n" +
+				"}";
+
+		ByteArrayInputStream bais = new ByteArrayInputStream(
+				entry.getBytes(StandardCharsets.UTF_8));
+
+		BibTeXDatabase db = new BibTeXConverter().loadDatabase(bais);
+		BibTeXItemDataProvider sys = new BibTeXItemDataProvider();
+		sys.addDatabase(db);
+
+		try (CSL citeproc = new CSL(sys, "ieee")) {
+			citeproc.setOutputFormat("text");
+			sys.registerCitationItems(citeproc);
+
+			Bibliography b = citeproc.makeBibliography();
+			assertEquals(2, b.getEntries().length);
+			assertEquals("[1]J. Padhye, V. Firoiu, and D. Towsley, “A Stochastic Model of TCP Reno Congestion Avoidance and Control,” Univ. of Massachusetts, Amherst, MA, CMPSCI Tech. Rep. 99–02, 1999.\n", b.getEntries()[0]);
+			assertEquals("[2]D. Middleton and A. D. Spaulding, “A Tutorial Review of Elements of Weak Signal Detection in Non-Gaussian EMI Environments,” National Telecommunications and Information Administration (NTIA), U.S. Dept. of Commerce, NTIA Report 86–194, May 1986.\n", b.getEntries()[1]);
 		}
 	}
 }
