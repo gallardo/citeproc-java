@@ -1,7 +1,6 @@
-citeproc-java (<small><small>branch:</small> `master`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=master)
-=======================================================================
-<strong>This branch tracks [`master`](https://github.com/michel-kraemer/citeproc-java/tree/master) and customizes its
-CI scripts and documentation accordingly.</strong> DO NOT merge upstream.
+citeproc-java (<small><small>branch:</small> `bugfix/67`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=bugfix/67)
+=================================================================
+<strong>Fixes bug https://github.com/michel-kraemer/citeproc-java/issues/67.</strong> Currently not reproducible.
 
 <h1 align="center">
 	<br>
