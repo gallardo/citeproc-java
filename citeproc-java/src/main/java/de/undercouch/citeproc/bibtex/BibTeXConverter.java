@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,7 @@ public class BibTeXConverter {
 	private static final String FIELD_JOURNAL = "journal";
 	private static final String FIELD_JOURNALTITLE = "journaltitle";
 	private static final String FIELD_KEYWORDS = "keywords";
+	private static final String FIELD_LANGUAGE = "language";
 	private static final String FIELD_LOCATION = "location";
 	private static final String FIELD_MONTH = "month";
 	private static final String FIELD_NOTE = "note";
@@ -109,7 +111,6 @@ public class BibTeXConverter {
 	private static final String TYPE_TECHREPORT = "techreport";
 	private static final String TYPE_UNPUBLISHED = "unpublished";
 	private static final String TYPE_WWW = "www";
-	private static final String FIELD_LANGUAGE = "language";
 
 	private final LaTeXParser latexParser;
 	private final LaTeXPrinter latexPrinter;
@@ -138,7 +139,7 @@ public class BibTeXConverter {
 	 * @throws ParseException if the database is invalid
 	 */
 	public BibTeXDatabase loadDatabase(InputStream is) throws IOException, ParseException {
-		Reader reader = new InputStreamReader(is, "UTF-8");
+		Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
 		BibTeXParser parser = new BibTeXParser() {
 			@Override
 			public void checkStringResolution(Key key, BibTeXString string) {
