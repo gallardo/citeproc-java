@@ -1,4 +1,10 @@
-citeproc-java [![Build Status](https://travis-ci.org/michel-kraemer/citeproc-java.svg?branch=master)](https://travis-ci.org/michel-kraemer/citeproc-java)
+citeproc-java (<small><small>branch:</small> `master-renovate`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=master-renovate)
+=================================================================
+<strong>This branch tracks [`master`](https://github.com/gallardo/citeproc-java/tree/master) and is this repository
+default branch to allow for integration with [Renovate](https://docs.renovatebot.com/java/).</strong> Renovate requires
+its config file to be in the default branch of a repo.
+
+citeproc-java
 =============
 
 A [Citation Style Language (CSL)](http://citationstyles.org/) processor
