@@ -1,4 +1,8 @@
-citeproc-java [![Build Status](https://travis-ci.org/michel-kraemer/citeproc-java.svg?branch=master)](https://travis-ci.org/michel-kraemer/citeproc-java)
+citeproc-java (<small><small>branch:</small> `feat/renovate`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=feat/renovate)
+=================================================================
+<strong>Integrates [Renovate](https://docs.renovatebot.com/java/).</strong>
+
+citeproc-java
 =============
 
 A [Citation Style Language (CSL)](http://citationstyles.org/) processor
