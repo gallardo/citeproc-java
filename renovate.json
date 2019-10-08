@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "baseBranch": ["feat/renovate"],
+  "enabledManagers": ["docker-file", "github-actions", "gradle", "gradle-wrapper"]
+}
