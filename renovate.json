@@ -2,6 +2,6 @@
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["feat/renovate"],
+  "baseBranch": ["feat/renovate"],
   "enabledManagers": ["docker-file", "github-actions", "gradle", "gradle-wrapper"]
 }
