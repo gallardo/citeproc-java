@@ -1,7 +1,8 @@
-citeproc-java (<small><small>branch:</small> `master`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=master)
+citeproc-java (<small><small>branch:</small> `master-renovate`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=master-renovate)
 =======================================================================
-<strong>This branch tracks [`master`](https://github.com/michel-kraemer/citeproc-java/tree/master) and customizes its
-CI scripts and documentation accordingly.</strong> DO NOT merge upstream.
+<strong>This branch tracks [`master`](https://github.com/michel-kraemer/citeproc-java/tree/master) and is the default
+branch of this repository to allow for integration with [Renovate](https://docs.renovatebot.com/java/).</strong>
+Renovate requires its config file to be in the default branch of a repo.
 
 <h1 align="center">
 	<br>
