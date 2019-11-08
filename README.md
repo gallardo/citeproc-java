@@ -1,3 +1,8 @@
+citeproc-java (<small><small>branch:</small> `master`</small>) ![](https://github.com/gallardo/citeproc-java/workflows/Java%20CI/badge.svg?branch=master)
+=======================================================================
+<strong>This branch tracks [`master`](https://github.com/michel-kraemer/citeproc-java/tree/master) and customizes its
+CI scripts and documentation accordingly.</strong> DO NOT merge upstream.
+
 <h1 align="center">
 	<br>
 	<br>
@@ -6,6 +11,9 @@
 	<br>
 	<br>
 </h1>
+
+citeproc-java
+=============
 
 > citeproc-java is a [Citation Style Language (CSL)](http://citationstyles.org/)
 > processor for Java. It interprets CSL styles and generates citations and
