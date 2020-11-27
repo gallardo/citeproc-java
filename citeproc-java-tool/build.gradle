@@ -15,7 +15,7 @@ dependencies {
     }
 
     runtime 'org.citationstyles:styles:2.0.0'
-    runtime 'org.citationstyles:locales:2.0.0'
+    runtime 'org.citationstyles:locales:20.11'
 }
 
 mainClassName = 'de.undercouch.citeproc.CSLTool'

@@ -63,7 +63,7 @@ dependencies {
 
     testCompile 'org.fusesource.jansi:jansi:1.18'
     testCompile 'org.citationstyles:styles:2.0.0'
-    testCompile 'org.citationstyles:locales:2.0.0'
+    testCompile 'org.citationstyles:locales:20.11'
     testCompile 'com.carrotsearch:junit-benchmarks:0.7.2'
 
     // compile-time-only dependency to jackson annotations to avoid
