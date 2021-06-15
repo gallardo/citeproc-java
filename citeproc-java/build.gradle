@@ -61,7 +61,7 @@ dependencies {
         compileOnly getV8Dependency()
     }
 
-    testCompile 'org.fusesource.jansi:jansi:1.18'
+    testCompile 'org.fusesource.jansi:jansi:2.3.3'
     testCompile 'org.citationstyles:styles:2.0.0'
     testCompile 'org.citationstyles:locales:2.0.0'
     testCompile 'com.carrotsearch:junit-benchmarks:0.7.2'
