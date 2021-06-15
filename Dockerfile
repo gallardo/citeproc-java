@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-slim AS build
+FROM openjdk:18-jdk-slim AS build
 MAINTAINER Michel Kraemer <michel@undercouch.de>
 
 COPY . /citeproc-java
